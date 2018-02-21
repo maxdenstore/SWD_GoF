@@ -21,6 +21,10 @@ namespace ObsLib
     public class Portifolio : IStockObs , IPortifolio
 
     {
+        public Portifolio()
+        {
+            StockList = new List<IStock>();
+        }
         public void update(int id, double price) //updates the prices in the observers list
         {
             foreach (var VARIABLE in StockList)
@@ -32,10 +36,7 @@ namespace ObsLib
             }
         }
 
-        public List<IStock> StockList
-        {
-            get { return StockList; }
-        }
+        public List<IStock> StockList { get; }
 
         public void buyStock(int amount, IStock stock)
         {
