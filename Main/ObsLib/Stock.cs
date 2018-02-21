@@ -10,13 +10,13 @@ namespace ObsLib
 
     interface Isub
     {
-        void attach();
-        void Detach();
+        void attach(IStockObs newObs);
+        void Detach(IStockObs newObs);
         void notify();
     }
     interface IStock
     {
-        int _id { get; set; }
+        int _id { get; }
         string _name { get; set; }
         double _price { get; set; }
         int _availibleAmount { get; set; }
@@ -26,33 +26,48 @@ namespace ObsLib
     }
     public class Stock : IStock , Isub
     {
+        private List<IStockObs> observersList = new List<IStockObs>();
+        private static int id = 0;
+        public Stock(string name, double price, int availibleAmount)
+        {
+            _id = id++;
+            _name = name;
+            _price = price;
+            _availibleAmount = availibleAmount;
+        }
         public int _id
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _id; }
+           private set { _id = value; }
         }
 
         public string _name
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return  _name; }
+            set { _name = value; }
         }
 
         public double _price
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return _price; }
+            set { _price = value; }
         }
 
         public int _availibleAmount
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get {return  _availibleAmount; }
+            set { _availibleAmount = value; }
         }
 
         public int buy(int amount)
         {
-            throw new NotImplementedException();
+            if (_availibleAmount - amount > 0)
+            {
+                _availibleAmount = _availibleAmount - amount;
+                return amount;
+            }
+
+            return 0; //buy not possibale
         }
 
         public void sell(int amount)
@@ -60,19 +75,22 @@ namespace ObsLib
             throw new NotImplementedException();
         }
 
-        public void attach()
+        public void attach(IStockObs newObs)
         {
-            throw new NotImplementedException();
+            observersList.Add(newObs);
         }
 
-        public void Detach()
+        public void Detach(IStockObs newObs)
         {
-            throw new NotImplementedException();
+            observersList.Remove(newObs);
         }
 
         public void notify()
         {
-            throw new NotImplementedException();
+            foreach (var obs in observersList)
+            {
+                obs.update(_id,_price);
+            }
         }
     }
 }
