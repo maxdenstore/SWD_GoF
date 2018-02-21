@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ObsLib
 {
-    interface IStockObs
+    public interface IStockObs
     {
         void update(int id, double price);
     }
 
-    interface IPortifolio
+    public interface IPortifolio
     {
         List<IStock> StockList { get;}
         void buyStock(int amount, IStock stock);
@@ -76,7 +76,7 @@ namespace ObsLib
         }
     }
 
-    interface IPortifolioDisplay
+    public interface IPortifolioDisplay
     {
         void print(List<IStock> alistToPrint);
     }

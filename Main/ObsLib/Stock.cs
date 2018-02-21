@@ -8,13 +8,13 @@ namespace ObsLib
 {
 
 
-    interface Isub
+    public interface Isub
     {
         void attach(IStockObs newObs);
         void Detach(IStockObs newObs);
         void notify();
     }
-    interface IStock
+    public interface IStock
     {
         int _id { get; }
         string _name { get; set; }
