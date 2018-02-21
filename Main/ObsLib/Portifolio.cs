@@ -18,7 +18,28 @@ namespace ObsLib
         bool sellStock(int amount);
     }
 
-    class Portifolio
+    class Portifolio : IStockObs , IPortifolio
+
     {
+        public void update(int id, double price)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<IStock> StockliList
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        public int buyStock(int amount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool sellStock(int amount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
