@@ -13,33 +13,82 @@ namespace ObsLib
 
     interface IPortifolio
     {
-        List<IStock> StockliList { get; set; }
-        int buyStock(int amount);
-        bool sellStock(int amount);
+        List<IStock> StockList { get;}
+        void buyStock(int amount, IStock stock);
+        bool sellStock(int amount, IStock stock);
     }
 
     class Portifolio : IStockObs , IPortifolio
 
     {
-        public void update(int id, double price)
+        public void update(int id, double price) //updates the prices in the observers list
         {
-            throw new NotImplementedException();
+            foreach (var VARIABLE in StockList)
+            {
+                if (VARIABLE._id == id)
+                {
+                    VARIABLE._price = price;
+                }
+            }
         }
 
-        public List<IStock> StockliList
+        public List<IStock> StockList
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return StockList; }
         }
 
-        public int buyStock(int amount)
+        public void buyStock(int amount, IStock stock)
         {
-            throw new NotImplementedException();
+            //see if stock exsists:
+            foreach (var VARIABLE in StockList)
+            {
+                if (VARIABLE._id == stock._id)
+                {
+                    VARIABLE._availibleAmount += amount;
+                    return;
+                }
+                StockList.Add(stock);
+            }
+
+
         }
 
-        public bool sellStock(int amount)
+        public bool sellStock(int amount, IStock stock)
         {
-            throw new NotImplementedException();
+            //find the stock
+            foreach (var VARIABLE in StockList)
+            {
+                if (VARIABLE._id == stock._id) //found
+                {
+                    if (VARIABLE._availibleAmount < amount)
+                    {
+                        Console.WriteLine("not enough stock");
+                        return false;
+                    }
+
+                    Console.WriteLine("sold stock: " + VARIABLE._name);
+                    VARIABLE._availibleAmount -= amount;
+                    return true;
+                }
+            }
+            Console.WriteLine("no stocks owned of that type");
+            return false;
+        }
+    }
+
+    interface IPortifolioDisplay
+    {
+        void print(List<IStock> alistToPrint);
+    }
+
+    class portifolioDisplay : IPortifolioDisplay
+    {
+        public void print(List<IStock> alistToPrint)
+        {
+            foreach (var VARIABLE in alistToPrint)
+            {
+                Console.WriteLine(VARIABLE._name + " user has: "+ VARIABLE._availibleAmount + "availible stocks");
+            }
         }
     }
 }
