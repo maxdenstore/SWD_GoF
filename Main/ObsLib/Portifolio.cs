@@ -18,7 +18,7 @@ namespace ObsLib
         bool sellStock(int amount, IStock stock);
     }
 
-    class Portifolio : IStockObs , IPortifolio
+    public class Portifolio : IStockObs , IPortifolio
 
     {
         public void update(int id, double price) //updates the prices in the observers list
@@ -81,7 +81,7 @@ namespace ObsLib
         void print(List<IStock> alistToPrint);
     }
 
-    class portifolioDisplay : IPortifolioDisplay
+    public class portifolioDisplay : IPortifolioDisplay
     {
         public void print(List<IStock> alistToPrint)
         {
