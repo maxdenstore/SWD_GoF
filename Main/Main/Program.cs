@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ObsLib;
 
 namespace Main
 {
@@ -10,7 +11,9 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            ObsLib
+            ObsLib.IPortifolio a = new Portifolio();
+            IPortifolioDisplay b = new portifolioDisplay();
+            b.print(a.StockList);
         }
     }
 }
