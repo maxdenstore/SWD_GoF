@@ -9,20 +9,24 @@ namespace ObsLib
 
     public interface IPortifolioDisplay
     {
-        void print(List<IStock> alistToPrint);
+        void print(IPortifolio port);
     }
 
     public class portifolioDisplay : IPortifolioDisplay
     {
-        public void print(List<IStock> alistToPrint)
+        public void print(IPortifolio port)
         {
-            if (alistToPrint.Count == 0)
+            if (port.StockList.Count == 0)
             {
                 Console.WriteLine("there is no stocks to print");
+                return;
             }
-            foreach (var VARIABLE in alistToPrint)
+
+            Console.WriteLine(port._name + " has the following stocks: ");
+            foreach (var VARIABLE in port.StockList)
             {
-                Console.WriteLine(VARIABLE.Name + " user has: " + VARIABLE.AvailibleAmount + "availible stocks");
+               
+                Console.WriteLine(VARIABLE.Name + " amount " + VARIABLE.AvailibleAmount);
             }
         }
     }
