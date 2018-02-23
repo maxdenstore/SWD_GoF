@@ -21,13 +21,13 @@ namespace ObsLib
         double Price { get; set; }
         int AvailibleAmount { get; set; }
         int Buy(int amount);
-        void Sell(int amount);
+        bool Sell(int amount);
        
     }
     public class Stock : IStock , Isub
     {
         private List<IStockObs> observersList = new List<IStockObs>();
- 
+        private double _price = new double();
 
         public Stock(string name, double price, int availibleAmount)
         {
@@ -41,14 +41,13 @@ namespace ObsLib
 
         public double Price
         {
-            get { return Price; }
+            get { return _price; }
             set
             {
-                Price = value;
+                _price = value;
                 notify();
             }
         }
-
 
         public int AvailibleAmount { get; set; }
 
@@ -63,12 +62,20 @@ namespace ObsLib
             return 0; //buy not possibale
         }
 
-        public void Sell(int amount)
+        public bool Sell(int amount)
         {
-            throw new NotImplementedException();
+            if (amount > 0)
+            {
+                AvailibleAmount += amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public void attach(IStockObs newObs)
+            public void attach(IStockObs newObs)
         {
             observersList.Add(newObs);
         }
