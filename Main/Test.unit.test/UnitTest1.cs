@@ -59,7 +59,7 @@ namespace Test.unit.test
         [TestCase(-10, false)]
         public void Stock_Sell_test(int SellAmount, bool state)
         {
-            Stock _uut2 = new Stock("test2", 102.0, availible);
+            Stock _uut2 = new Stock("test2", 102.0, 20);
             
             NUnit.Framework.Assert.That(_uut2.Sell(SellAmount), Is.EqualTo(state));
         }
