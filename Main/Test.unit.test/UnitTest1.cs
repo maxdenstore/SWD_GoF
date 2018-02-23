@@ -54,5 +54,17 @@ namespace Test.unit.test
             NUnit.Framework.Assert.That(_uut2.AvailibleAmount, Is.EqualTo(afterBuyAmount));
         }
 
+        [TestCase(10, 5, 5)]
+        [TestCase(5, 5, 0)]
+        [TestCase(10, 15, 10)]
+        public void Stock_update_test(int availible, int buyAmount, int afterBuyAmount)
+        {
+            Stock _uut2 = new Stock("test2", 102.0, availible);
+            Portifolio port = new Portifolio("jasper");
+
+            port.buyStock(buyAmount, _uut2);
+            NUnit.Framework.Assert.That(_uut2.AvailibleAmount, Is.EqualTo(afterBuyAmount));
+        }
+
     }
 }
