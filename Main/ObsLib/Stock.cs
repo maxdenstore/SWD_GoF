@@ -32,8 +32,8 @@ namespace ObsLib
         public Stock(string name, double price, int availibleAmount)
         {
             Name = name;
-            Price = price;
-            AvailibleAmount = availibleAmount;
+            Price = (price > 0.0 ? price : 0);
+            AvailibleAmount = (availibleAmount > 0.0 ? availibleAmount : 0);
         }
         public int Id { get; set; }
 
@@ -44,8 +44,14 @@ namespace ObsLib
             get { return _price; }
             set
             {
+                if(value > 0) { 
                 _price = value;
                 notify();
+                }
+                else
+                {
+                    Console.WriteLine("price cannot be negative");
+                }
             }
         }
 
@@ -53,6 +59,8 @@ namespace ObsLib
 
         public int Buy(int amount)
         {
+            if (amount < 0) { return 0;}
+
             if (AvailibleAmount - amount >= 0)
             {
                 AvailibleAmount = AvailibleAmount - amount;
@@ -75,7 +83,7 @@ namespace ObsLib
             }
         }
 
-            public void attach(IStockObs newObs)
+        public void attach(IStockObs newObs)
         {
             observersList.Add(newObs);
         }

@@ -19,13 +19,19 @@ namespace Test.unit.test
             
         }
 
-       /*  [Test]
-       public void Stock_Ctor_ID_test()
+        [Test]
+       public void Stock_Ctor_Negatice_Price_test()
         {
-            Stock _uut2 = new Stock("test2", 102.0, 20);
-            Stock _uut3 = new Stock("test2", 102.0, 20);
-            NUnit.Framework.Assert.That(_uut3.Id, Is.EqualTo(_uut2.Id + 1));
-        }*/
+            Stock _uut2 = new Stock("test2", -102.0, 20);
+            
+            NUnit.Framework.Assert.That(_uut2.Price, Is.EqualTo(0));
+        }
+        public void Stock_Ctor_Negatice_AvailibleAmount_test()
+        {
+            Stock _uut2 = new Stock("test2", -102.0, -20);
+
+            NUnit.Framework.Assert.That(_uut2.AvailibleAmount, Is.EqualTo(0));
+        }
 
 
 

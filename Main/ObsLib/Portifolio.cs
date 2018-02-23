@@ -20,7 +20,6 @@ namespace ObsLib
     }
 
     public class Portifolio : IStockObs , IPortifolio
-
     {
         public Portifolio(string name)
         {
@@ -42,8 +41,9 @@ namespace ObsLib
 
         public void buyStock(int amount, IStock stock)
         {
+            if (amount < 0) { return;}
             int bought = stock.Buy(amount);
-            
+  
             //see if stock exsists:
             foreach (var VARIABLE in StockList)
             {
@@ -63,7 +63,7 @@ namespace ObsLib
             //find the stock
             foreach (var VARIABLE in StockList)
             {
-                if (VARIABLE.Id == stock.Id) //found
+                if (VARIABLE.Name == stock.Name) //found
                 {
                     if (VARIABLE.AvailibleAmount < amount)
                     {
