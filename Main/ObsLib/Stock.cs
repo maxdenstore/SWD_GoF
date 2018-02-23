@@ -27,11 +27,10 @@ namespace ObsLib
     public class Stock : IStock , Isub
     {
         private List<IStockObs> observersList = new List<IStockObs>();
-        private static int _Nextid = 0;
+ 
 
         public Stock(string name, double price, int availibleAmount)
         {
-            this.Id = _Nextid++;
             Name = name;
             Price = price;
             AvailibleAmount = availibleAmount;
@@ -46,7 +45,7 @@ namespace ObsLib
 
         public int Buy(int amount)
         {
-            if (AvailibleAmount - amount > 0)
+            if (AvailibleAmount - amount >= 0)
             {
                 AvailibleAmount = AvailibleAmount - amount;
                 return amount;
