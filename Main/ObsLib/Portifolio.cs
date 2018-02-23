@@ -18,9 +18,13 @@ namespace ObsLib
         bool sellStock(int amount, IStock stock);
     }
 
-    class Portifolio : IStockObs , IPortifolio
+    public class Portifolio : IStockObs , IPortifolio
 
     {
+        public Portifolio()
+        {
+            StockList = new List<IStock>();
+        }
         public void update(int id, double price) //updates the prices in the observers list
         {
             foreach (var VARIABLE in StockList)
@@ -32,10 +36,7 @@ namespace ObsLib
             }
         }
 
-        public List<IStock> StockList
-        {
-            get { return StockList; }
-        }
+        public List<IStock> StockList { get; }
 
         public void buyStock(int amount, IStock stock)
         {
@@ -76,15 +77,19 @@ namespace ObsLib
         }
     }
 
-    interface IPortifolioDisplay
+    public interface IPortifolioDisplay
     {
         void print(List<IStock> alistToPrint);
     }
 
-    class portifolioDisplay : IPortifolioDisplay
+    public class portifolioDisplay : IPortifolioDisplay
     {
         public void print(List<IStock> alistToPrint)
         {
+            if (alistToPrint.Count == 0)
+            {
+                Console.WriteLine("there is no stocks to print");
+            }
             foreach (var VARIABLE in alistToPrint)
             {
                 Console.WriteLine(VARIABLE._name + " user has: "+ VARIABLE._availibleAmount + "availible stocks");
