@@ -13,6 +13,11 @@ namespace Main
         {
             ObsLib.IPortifolio a = new Portifolio("Hans");
             IPortifolioDisplay b = new portifolioDisplay();
+<<<<<<< HEAD
+            Stock stockGoo = new Stock("google", 100.00, 80);
+            a.buyStock(10, stockGoo);
+            b.print(a.StockList);
+=======
 
             Stock stockGoo = new Stock("google", 100.00, 80);
             Stock stockapl = new Stock("Apple", 200.00,90);
@@ -28,6 +33,7 @@ namespace Main
             a.buyStock(20,stockGoo);
 
             b.print(a);
+>>>>>>> 03b3ca83331e0fa447fd25066e2b44dc276fe712
 
 
             Console.ReadLine();

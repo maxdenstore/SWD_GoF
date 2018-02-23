@@ -42,17 +42,19 @@ namespace ObsLib
 
         public void buyStock(int amount, IStock stock)
         {
+            int bought = stock.Buy(amount);
+            
             //see if stock exsists:
             foreach (var VARIABLE in StockList)
             {
                 if (VARIABLE.Name == stock.Name)
                 {
-                    VARIABLE.AvailibleAmount += amount;
+                    VARIABLE.AvailibleAmount += bought;
                     return;
                 }
                 
             }
-            StockList.Add(new Stock(stock.Name,stock.Price,amount));
+            StockList.Add(new Stock(stock.Name,stock.Price,bought));
 
         }
 
