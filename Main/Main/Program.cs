@@ -15,10 +15,20 @@ namespace Main
             IPortifolioDisplay b = new portifolioDisplay();
 
             Stock stockGoo = new Stock("google", 100.00, 80);
+            Stock stockapl = new Stock("Apple", 200.00,90);
 
             a.buyStock(10, stockGoo);
+            a.buyStock(20,stockapl);
+
+            
 
             b.print(a);
+            stockGoo.Price = 250;
+
+            a.buyStock(20,stockGoo);
+
+            b.print(a);
+
 
             Console.ReadLine();
         }

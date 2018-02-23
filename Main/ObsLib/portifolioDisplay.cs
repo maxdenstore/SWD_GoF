@@ -26,7 +26,7 @@ namespace ObsLib
             foreach (var VARIABLE in port.StockList)
             {
                
-                Console.WriteLine(VARIABLE.Name + " amount " + VARIABLE.AvailibleAmount);
+                Console.WriteLine(VARIABLE.Name + " amount " + VARIABLE.AvailibleAmount + " at price: " + VARIABLE.Price);
             }
         }
     }

@@ -40,7 +40,16 @@ namespace ObsLib
 
         public string Name { get; set; }
 
-        public double Price { get; set; }
+        public double Price
+        {
+            get { return Price; }
+            set
+            {
+                Price = value;
+                notify();
+            }
+        }
+
 
         public int AvailibleAmount { get; set; }
 
