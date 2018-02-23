@@ -22,7 +22,7 @@ namespace ObsLib
             }
             foreach (var VARIABLE in alistToPrint)
             {
-                Console.WriteLine(VARIABLE._name + " user has: " + VARIABLE._availibleAmount + "availible stocks");
+                Console.WriteLine(VARIABLE.Name + " user has: " + VARIABLE.AvailibleAmount + "availible stocks");
             }
         }
     }

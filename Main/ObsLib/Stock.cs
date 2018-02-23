@@ -16,61 +16,46 @@ namespace ObsLib
     }
     public interface IStock
     {
-        int _id { get; }
-        string _name { get; set; }
-        double _price { get; set; }
-        int _availibleAmount { get; set; }
-        int buy(int amount);
-        void sell(int amount);
+        int Id { get; }
+        string Name { get; set; }
+        double Price { get; set; }
+        int AvailibleAmount { get; set; }
+        int Buy(int amount);
+        void Sell(int amount);
        
     }
     public class Stock : IStock , Isub
     {
         private List<IStockObs> observersList = new List<IStockObs>();
-        private static int id = 0;
+        private static int _Nextid = 0;
+
         public Stock(string name, double price, int availibleAmount)
         {
-            _id = id++;
-            _name = name;
-            _price = price;
-            _availibleAmount = availibleAmount;
+            this.Id = _Nextid++;
+            Name = name;
+            Price = price;
+            AvailibleAmount = availibleAmount;
         }
-        public int _id
-        {
-            get { return _id; }
-           private set { _id = value; }
-        }
+        public int Id { get; set; }
 
-        public string _name
-        {
-            get { return  _name; }
-            set { _name = value; }
-        }
+        public string Name { get; set; }
 
-        public double _price
-        {
-            get { return _price; }
-            set { _price = value; }
-        }
+        public double Price { get; set; }
 
-        public int _availibleAmount
-        {
-            get {return  _availibleAmount; }
-            set { _availibleAmount = value; }
-        }
+        public int AvailibleAmount { get; set; }
 
-        public int buy(int amount)
+        public int Buy(int amount)
         {
-            if (_availibleAmount - amount > 0)
+            if (AvailibleAmount - amount > 0)
             {
-                _availibleAmount = _availibleAmount - amount;
+                AvailibleAmount = AvailibleAmount - amount;
                 return amount;
             }
 
             return 0; //buy not possibale
         }
 
-        public void sell(int amount)
+        public void Sell(int amount)
         {
             throw new NotImplementedException();
         }
@@ -89,7 +74,7 @@ namespace ObsLib
         {
             foreach (var obs in observersList)
             {
-                obs.update(_id,_price);
+                obs.update(Id,Price);
             }
         }
     }

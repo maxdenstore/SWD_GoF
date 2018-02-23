@@ -29,9 +29,9 @@ namespace ObsLib
         {
             foreach (var VARIABLE in StockList)
             {
-                if (VARIABLE._id == id)
+                if (VARIABLE.Id == id)
                 {
-                    VARIABLE._price = price;
+                    VARIABLE.Price = price;
                 }
             }
         }
@@ -43,9 +43,9 @@ namespace ObsLib
             //see if stock exsists:
             foreach (var VARIABLE in StockList)
             {
-                if (VARIABLE._id == stock._id)
+                if (VARIABLE.Id == stock.Id)
                 {
-                    VARIABLE._availibleAmount += amount;
+                    VARIABLE.AvailibleAmount += amount;
                     return;
                 }
                 StockList.Add(stock);
@@ -59,16 +59,16 @@ namespace ObsLib
             //find the stock
             foreach (var VARIABLE in StockList)
             {
-                if (VARIABLE._id == stock._id) //found
+                if (VARIABLE.Id == stock.Id) //found
                 {
-                    if (VARIABLE._availibleAmount < amount)
+                    if (VARIABLE.AvailibleAmount < amount)
                     {
                         Console.WriteLine("not enough stock");
                         return false;
                     }
 
-                    Console.WriteLine("sold stock: " + VARIABLE._name);
-                    VARIABLE._availibleAmount -= amount;
+                    Console.WriteLine("sold stock: " + VARIABLE.Name);
+                    VARIABLE.AvailibleAmount -= amount;
                     return true;
                 }
             }
@@ -77,23 +77,4 @@ namespace ObsLib
         }
     }
 
-    public interface IPortifolioDisplay
-    {
-        void print(List<IStock> alistToPrint);
-    }
-
-    public class portifolioDisplay : IPortifolioDisplay
-    {
-        public void print(List<IStock> alistToPrint)
-        {
-            if (alistToPrint.Count == 0)
-            {
-                Console.WriteLine("there is no stocks to print");
-            }
-            foreach (var VARIABLE in alistToPrint)
-            {
-                Console.WriteLine(VARIABLE._name + " user has: "+ VARIABLE._availibleAmount + "availible stocks");
-            }
-        }
-    }
 }
