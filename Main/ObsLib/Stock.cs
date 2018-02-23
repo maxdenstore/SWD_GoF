@@ -74,7 +74,7 @@ namespace ObsLib
         {
             foreach (var obs in observersList)
             {
-                obs.update(Id,Price);
+                obs.update(Name,Price);
             }
         }
     }

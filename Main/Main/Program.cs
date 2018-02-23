@@ -11,11 +11,14 @@ namespace Main
     {
         static void Main(string[] args)
         {
-            ObsLib.IPortifolio a = new Portifolio();
+            ObsLib.IPortifolio a = new Portifolio("Hans");
             IPortifolioDisplay b = new portifolioDisplay();
-            //Stock stockGoo = new Stock("google", 100.00, 80);
-            //a.buyStock(10, stockGoo);
-            b.print(a.StockList);
+
+            Stock stockGoo = new Stock("google", 100.00, 80);
+
+            a.buyStock(10, stockGoo);
+
+            b.print(a);
 
             Console.ReadLine();
         }

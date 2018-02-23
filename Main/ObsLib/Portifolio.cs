@@ -8,7 +8,7 @@ namespace ObsLib
 {
     public interface IStockObs
     {
-        void update(int id, double price);
+        void update(string name, double price);
     }
 
     public interface IPortifolio
@@ -16,20 +16,22 @@ namespace ObsLib
         List<IStock> StockList { get;}
         void buyStock(int amount, IStock stock);
         bool sellStock(int amount, IStock stock);
+        string _name { get; set; }
     }
 
     public class Portifolio : IStockObs , IPortifolio
 
     {
-        public Portifolio()
+        public Portifolio(string name)
         {
+            _name = name;
             StockList = new List<IStock>();
         }
-        public void update(int id, double price) //updates the prices in the observers list
+        public void update(string name, double price) //updates the prices in the observers list
         {
             foreach (var VARIABLE in StockList)
             {
-                if (VARIABLE.Id == id)
+                if (VARIABLE.Name == name)
                 {
                     VARIABLE.Price = price;
                 }
@@ -43,14 +45,14 @@ namespace ObsLib
             //see if stock exsists:
             foreach (var VARIABLE in StockList)
             {
-                if (VARIABLE.Id == stock.Id)
+                if (VARIABLE.Name == stock.Name)
                 {
                     VARIABLE.AvailibleAmount += amount;
                     return;
                 }
-                StockList.Add(stock);
+                
             }
-
+            StockList.Add(new Stock(stock.Name,stock.Price,amount));
 
         }
 
@@ -75,6 +77,9 @@ namespace ObsLib
             Console.WriteLine("no stocks owned of that type");
             return false;
         }
+
+        public string _name { get; set; }
+
     }
 
 }
