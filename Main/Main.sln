@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{97FB603A-E427-4C9C-A7ED-33C11F75C66B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObsLib", "ObsLib\ObsLib.csproj", "{E2142C5D-44DE-488C-8BD8-468562EC54F1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stock.Unit.Test", "stock.Unit.Test\stock.Unit.Test.csproj", "{AA5BCC48-327A-490E-A4DE-50ECD10319F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{E2142C5D-44DE-488C-8BD8-468562EC54F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2142C5D-44DE-488C-8BD8-468562EC54F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2142C5D-44DE-488C-8BD8-468562EC54F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA5BCC48-327A-490E-A4DE-50ECD10319F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA5BCC48-327A-490E-A4DE-50ECD10319F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA5BCC48-327A-490E-A4DE-50ECD10319F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA5BCC48-327A-490E-A4DE-50ECD10319F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
