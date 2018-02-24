@@ -25,7 +25,7 @@ namespace ObsLib
 
                 prizeup.notify();
 
-                Thread.Sleep(2000);
+                Thread.Sleep(rnd.Next(1000,2000));
             }
 
         }
