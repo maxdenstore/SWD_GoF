@@ -5,7 +5,7 @@ namespace ObsLib
 {
     public class PriceChanger
     {
-        private static Mutex mut = new Mutex();
+        //private static Mutex mut = new Mutex();
 
         public void priceChanger(Stock changer)
         {
@@ -17,7 +17,7 @@ namespace ObsLib
         {
             while (true)
             {
-                mut.WaitOne();
+                //mut.WaitOne();
 
                 Stock prizeup = (Stock) obj;
                 DateTime start = DateTime.Now;
@@ -29,7 +29,7 @@ namespace ObsLib
                                   prizeup.Price);
 
 
-                mut.ReleaseMutex();
+                //mut.ReleaseMutex();
 
                 Thread.Sleep(rnd.Next(1000, 2000));
 

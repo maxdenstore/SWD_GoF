@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ObsLib
@@ -28,6 +29,7 @@ namespace ObsLib
     {
         private List<IStockObs> observersList = new List<IStockObs>();
         private double _price = new double();
+        private static Mutex mut = new Mutex();
 
         public Stock(string name, double price, int availibleAmount)
         {
@@ -44,14 +46,21 @@ namespace ObsLib
             get { return _price; }
             set
             {
-                if(value > 0) { 
-                _price = value;
-                notify();
+               
+                if (value > 0) {
+                    mut.WaitOne();
+                    Console.WriteLine("mutex locked");
+                    _price = value;
+                    mut.ReleaseMutex();
+                    Console.WriteLine("mutex unlocked");
+                    notify();
                 }
                 else
                 {
                     Console.WriteLine("price cannot be negative");
                 }
+                
+
             }
         }
 
