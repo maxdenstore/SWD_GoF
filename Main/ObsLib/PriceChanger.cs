@@ -28,11 +28,10 @@ namespace ObsLib
                 Console.WriteLine(prizeup.Name + " amount avalible " + prizeup.AvailibleAmount + " new price: " +
                                   prizeup.Price);
 
-                prizeup.notify();
-
-                Thread.Sleep(rnd.Next(1000, 2000));
 
                 mut.ReleaseMutex();
+
+                Thread.Sleep(rnd.Next(1000, 2000));
 
             }
         }
