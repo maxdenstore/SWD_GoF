@@ -5,7 +5,7 @@ namespace ObsLib
 {
     public class PriceChanger
     {
-        //private static Mutex mut = new Mutex();
+        private static Mutex mut = new Mutex();
 
         public void priceChanger(Stock changer)
         {
@@ -15,21 +15,17 @@ namespace ObsLib
 
         private void TimeThread(object obj)
         {
+            Stock prizeup = (Stock)obj;
+            DateTime start = DateTime.Now;
+            Random rnd = new Random();
             while (true)
             {
-                //mut.WaitOne();
-
-                Stock prizeup = (Stock) obj;
-                DateTime start = DateTime.Now;
-                Random rnd = new Random();
-                int newPrice = (start.Second) + (rnd.Next(50, 100));
+                int newPrice = (rnd.Next(50, 100));
                 prizeup.Price = newPrice;
-
+                mut.WaitOne();
                 Console.WriteLine(prizeup.Name + " amount avalible " + prizeup.AvailibleAmount + " new price: " +
                                   prizeup.Price);
-
-
-                //mut.ReleaseMutex();
+                mut.ReleaseMutex();
 
                 Thread.Sleep(rnd.Next(1000, 2000));
 
