@@ -16,7 +16,6 @@ namespace ObsLib
         private void TimeThread(object obj)
         {
             Stock prizeup = (Stock)obj;
-            DateTime start = DateTime.Now;
             Random rnd = new Random();
             while (true)
             {
