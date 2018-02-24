@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Portifolio.cs" />
     <Compile Include="portifolioDisplay.cs" />
+    <Compile Include="PriceChanger.cs" />
     <Compile Include="Stock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
