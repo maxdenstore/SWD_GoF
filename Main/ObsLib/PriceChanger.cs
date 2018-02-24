@@ -21,7 +21,7 @@ namespace ObsLib
                 int newPrice = (start.Second)+(rnd.Next(50,100));
                 prizeup.Price = newPrice;
 
-               Console.WriteLine(prizeup.Name + " amount avalible " + prizeup.AvailibleAmount + " new price: " + prizeup.Price);
+                Console.WriteLine(prizeup.Name + " amount avalible " + prizeup.AvailibleAmount + " new price: " + prizeup.Price);
 
                 prizeup.notify();
 
